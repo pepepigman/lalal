@@ -18,5 +18,5 @@ if (user) {
         profilePicElement.src = 'pepe.jpg';
     }
 
-    userNameElement.textContent = `Hi ${user.first_name} | @${user.username}`;
+    userNameElement.textContent = `Hi ${user.first_name}`;
 }
