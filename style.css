@@ -1,7 +1,7 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background-color: #D8BBDD;
+    background-color: #f4f4f4;
 }
 
 .container {
@@ -10,7 +10,7 @@ body {
     align-items: center;
     justify-content: center;
     height: 100vh;
-    background-color: #D8BBDD;
+    background-color: #f4f4f4;
 }
 
 .header {
@@ -32,18 +32,39 @@ h1 {
 }
 
 .main-content {
-    background-color: #D8BBDD;
+    background-color: #e0bbe4;
     width: 100%;
     padding: 20px;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }
 
-.token-input {
+p {
+    font-size: 18px;
+    color: #333;
+}
+
+hr {
+    width: 80%;
+    border: 0;
+    height: 1px;
+    background-color: #ccc;
+    margin: 10px 0;
+}
+
+.action-button {
     width: 80%;
     max-width: 400px;
     padding: 10px;
     font-size: 16px;
     border-radius: 20px;
     border: 1px solid #ccc;
+    background-color: #f4f4f4;
+    margin: 10px 0;
+    cursor: pointer;
+}
+
+.action-button:hover {
+    background-color: #ddd;
 }
