@@ -10,7 +10,7 @@ body {
     align-items: center;
     justify-content: center;
     height: 100vh;
-    background-color: #f4f4f4;
+    background-color: #D8BBDD;
 }
 
 .header {
@@ -32,7 +32,7 @@ h1 {
 }
 
 .main-content {
-    background-color: #dfd7bd;
+    background-color: #D8BBDD;
     width: 100%;
     padding: 20px;
     display: flex;
