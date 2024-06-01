@@ -4,19 +4,8 @@ Telegram.WebApp.ready();
 // Get user information from Telegram
 const user = Telegram.WebApp.initDataUnsafe.user;
 
-// Debug: Log user data to console
-console.log(user);
-
-// Set user profile picture and name
+// Set user profile picture and name if needed
 if (user) {
-    const profilePicElement = document.getElementById('profile-pic');
-    const userNameElement = document.getElementById('user-name');
-
-    if (user.photo_url) {
-        profilePicElement.src = user.photo_url;
-    } else {
-        profilePicElement.src = 'pfp.png';
-    }
-
-    userNameElement.textContent = `Hi ${user.first_name}`;
+    // You can use user data if required
+    console.log(`User: ${user.first_name} (@${user.username})`);
 }
