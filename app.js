@@ -15,7 +15,7 @@ if (user) {
     if (user.photo_url) {
         profilePicElement.src = user.photo_url;
     } else {
-        profilePicElement.src = 'pfp.jpg';
+        profilePicElement.src = 'pfp.png';
     }
 
     userNameElement.textContent = `Hi ${user.first_name}`;
