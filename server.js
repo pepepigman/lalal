@@ -1,10 +1,14 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const path = require('path');
 const { Keypair } = require('@solana/web3.js');
 
 const app = express();
 const port = process.env.PORT || 3000;
+
+// Serve static files from the "public" directory
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(bodyParser.json());
 app.use(cors());
@@ -40,6 +44,11 @@ app.post('/import-wallet', (req, res) => {
         console.error('Error importing wallet:', error);
         res.status(500).json({ error: 'Internal Server Error' });
     }
+});
+
+// Catch-all to serve index.html for any other routes
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
 app.listen(port, () => {
