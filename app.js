@@ -30,6 +30,8 @@ async function createWallet() {
     const data = await response.json();
     console.log('Wallet created:', data);
     alert(`New Wallet Created!\nPublic Key: ${data.publicKey}`);
+    localStorage.setItem('walletPublicKey', data.publicKey);
+    updateUI();
 }
 
 // Function to import a wallet
@@ -43,4 +45,25 @@ async function importWallet() {
     const data = await response.json();
     console.log('Wallet imported:', data);
     alert(`Wallet Imported!\nPublic Key: ${data.publicKey}`);
+    localStorage.setItem('walletPublicKey', data.publicKey);
+    updateUI();
 }
+
+// Function to update the UI based on wallet status
+function updateUI() {
+    const hasWallet = !!localStorage.getItem('walletPublicKey');
+    if (hasWallet) {
+        document.querySelector('.quick-buy').style.display = 'block';
+        document.querySelector('.dashboard').style.display = 'block';
+        document.querySelector('.create-wallet').style.display = 'none';
+        document.querySelector('.import-wallet').style.display = 'none';
+    } else {
+        document.querySelector('.quick-buy').style.display = 'none';
+        document.querySelector('.dashboard').style.display = 'none';
+        document.querySelector('.create-wallet').style.display = 'block';
+        document.querySelector('.import-wallet').style.display = 'block';
+    }
+}
+
+// Initialize UI on page load
+updateUI();
