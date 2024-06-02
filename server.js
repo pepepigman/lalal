@@ -1,28 +1,45 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 const { Keypair } = require('@solana/web3.js');
 
 const app = express();
 const port = process.env.PORT || 3000;
 
 app.use(bodyParser.json());
+app.use(cors());
+
+app.use((req, res, next) => {
+    console.log(`${req.method} ${req.url}`);
+    next();
+});
 
 // Endpoint to create a new wallet
 app.post('/create-wallet', (req, res) => {
-    const keypair = Keypair.generate();
-    const publicKey = keypair.publicKey.toBase58();
-    const secretKey = Array.from(keypair.secretKey);
+    try {
+        const keypair = Keypair.generate();
+        const publicKey = keypair.publicKey.toBase58();
+        const secretKey = Array.from(keypair.secretKey);
 
-    res.json({ publicKey, secretKey });
+        res.json({ publicKey, secretKey });
+    } catch (error) {
+        console.error('Error creating wallet:', error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
 });
 
 // Endpoint to import an existing wallet
 app.post('/import-wallet', (req, res) => {
-    const { secretKey } = req.body;
-    const keypair = Keypair.fromSecretKey(Uint8Array.from(secretKey));
-    const publicKey = keypair.publicKey.toBase58();
+    try {
+        const { secretKey } = req.body;
+        const keypair = Keypair.fromSecretKey(Uint8Array.from(secretKey));
+        const publicKey = keypair.publicKey.toBase58();
 
-    res.json({ publicKey });
+        res.json({ publicKey });
+    } catch (error) {
+        console.error('Error importing wallet:', error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
 });
 
 app.listen(port, () => {
