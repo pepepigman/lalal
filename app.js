@@ -1,10 +1,10 @@
-// Initialize the Telegram Web App
-Telegram.WebApp.ready();
+// Update with your Ngrok URL
+const serverUrl = 'https://3aed-95-34-89-220.ngrok-free.app';
 
 // Function to create a wallet
 async function createWallet() {
     try {
-        const response = await fetch('http://localhost:3000/create-wallet', { method: 'POST' });
+        const response = await fetch(`${serverUrl}/create-wallet`, { method: 'POST' });
         const data = await response.json();
         console.log('Wallet created:', data);
         alert(`New Wallet Created!\nPublic Key: ${data.publicKey}`);
@@ -19,7 +19,7 @@ async function createWallet() {
 async function importWallet() {
     const secretKey = prompt('Enter your secret key (comma-separated):');
     try {
-        const response = await fetch('http://localhost:3000/import-wallet', {
+        const response = await fetch(`${serverUrl}/import-wallet`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ secretKey: secretKey.split(',').map(Number) })
@@ -33,22 +33,3 @@ async function importWallet() {
         console.error('Error importing wallet:', error);
     }
 }
-
-// Function to update the UI based on wallet status
-function updateUI() {
-    const hasWallet = !!localStorage.getItem('walletPublicKey');
-    if (hasWallet) {
-        document.querySelector('.quick-buy').style.display = 'block';
-        document.querySelector('.dashboard').style.display = 'block';
-        document.querySelector('.create-wallet').style.display = 'none';
-        document.querySelector('.import-wallet').style.display = 'none';
-    } else {
-        document.querySelector('.quick-buy').style.display = 'none';
-        document.querySelector('.dashboard').style.display = 'none';
-        document.querySelector('.create-wallet').style.display = 'block';
-        document.querySelector('.import-wallet').style.display = 'block';
-    }
-}
-
-// Initialize UI on page load
-updateUI();
