@@ -1,5 +1,5 @@
 // Update with your Ngrok URL
-const serverUrl = 'https://3aed-95-34-89-220.ngrok-free.app';
+const serverUrl = 'https://lalal-three.vercel.app';
 
 // Function to create a wallet
 async function createWallet() {
