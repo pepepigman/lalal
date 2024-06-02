@@ -1,6 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const { Keypair, Connection, clusterApiUrl } = require('@solana/web3.js');
+const { Keypair } = require('@solana/web3.js');
 
 const app = express();
 const port = 3000;
