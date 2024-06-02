@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ChainScout Sniper</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles.css">
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
 </head>
 <body>
@@ -15,10 +15,10 @@
                 <p>Start by choosing what you want to do.</p>
             </div>
             <div class="main-content">
-                <button class="action-button quick-buy">Quick Buy</button>
-                <button class="action-button dashboard">Dashboard</button>
-                <button class="action-button" onclick="createWallet()">Create Wallet</button>
-                <button class="action-button" onclick="importWallet()">Import Wallet</button>
+                <button class="action-button quick-buy" style="display: none;">Quick Buy</button>
+                <button class="action-button dashboard" style="display: none;">Dashboard</button>
+                <button class="action-button create-wallet" onclick="createWallet()">Create Wallet</button>
+                <button class="action-button import-wallet" onclick="importWallet()">Import Wallet</button>
             </div>
         </div>
 
