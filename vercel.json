@@ -12,7 +12,4 @@
       "dest": "/server.js"
     }
   ],
-  "build": {
-    "command": "npm install"
-  }
 }
